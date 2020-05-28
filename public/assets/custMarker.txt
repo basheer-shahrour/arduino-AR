@@ -1,0 +1,9 @@
+// params of a-marker component
+type="pattern"
+preset="custom"
+url=""
+
+
+
+//ngrok command
+ngrok http -bind-tls=true localhost:2020
