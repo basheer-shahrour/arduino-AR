@@ -1,7 +1,7 @@
-window.onload = function() {
+window.onload = function () {
   let intervalLength = 30; // The speed of the animation (milliseconds to wait between ticks).
 
-  //for tracking border collisions.
+  // For tracking border collisions.
   let maxX = 1;
   let maxY = 1;
   let maxZ = 1;
@@ -9,7 +9,7 @@ window.onload = function() {
   let minY = -1;
   let minZ = -1;
 
-  //for tracking border color color timer.
+  // For tracking border color timer.
   let topColorTimer = 0;
   let rightColorTimer = 0;
   let leftColorTimer = 0;
@@ -25,13 +25,13 @@ window.onload = function() {
   let mySpherePosition = {
     x: 0,
     y: 0,
-    z: 0
+    z: 0,
   };
   // Create variables to track movement vectors.
   let mySphereVector = {
     x: 0,
     y: 0,
-    z: 0
+    z: 0,
   };
 
   // Random number between 0.020 and 0.030 for both x and z vectors.
