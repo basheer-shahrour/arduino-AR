@@ -1,76 +1,100 @@
-<!DOCTYPE html>
 <html>
   <head>
     <meta charset="UTF-8" />
     <title>arduinoAR</title>
   </head>
-  <!--0.9.2 is stable version for us-->
-  <script src="/libs/aframe@0.9.2/aframe.min.js"></script>
-  <!--2.2.2 is the version of AR.js-->
-  <script src="/libs/aframe-ar@2.2.2/aframe-ar.js"></script>
-
+  <script src="https://aframe.io/releases/1.0.0/aframe.min.js"></script>
+  <script src="https://raw.githack.com/jeromeetienne/AR.js/2.2.2/aframe/build/aframe-ar.min.js"></script>
+  <!-- <script src="/libs/aframe-ar@2.2.2/aframe-ar.js"></script> -->
   <script src="/libs/socket/socket.io.js"></script>
   <script src="/webSocket.js"></script>
-  <script src="/marker-based/panale-charts/app.js"></script>
+
+  <script src="/marker-based/panel-charts/components.js"></script>
+  <script src="/marker-based/panel-charts/cursor.js" defer></script>
 
   <body style="margin: 0px; overflow: hidden;">
-    <!-- Define the 3d scene and enabled ar.js -->
-    <a-scene debug embedded arjs="trackingMethod: best; debugUIEnabled: false;">
+    <a-scene embedded arjs>
       <a-marker
-        markerhandler
-        emitevents="true"
-        cursor="rayOrigin: mouse; fuse: false"
-        preset="hiro"
+        cursor="rayOrigin: mouse"
+        raycaster="objects: a-box"
+        type="pattern"
+        preset="custom"
+        url="/assets/markers/pattern-controlPanel.patt"
       >
         <a-box
-          position="0 0 0"
-          id="animated-model"
-          class="clickable"
-          height="1.5"
-          width="1.5"
+          position="0.5 0 0"
+          height="0.5"
+          width="0.5"
           depth="0.01"
           rotation="-90 0 0"
-          src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcRLcJko_vT93OYVGSco0Uq0Eicexbu2bLcbVAxrvsAo7Bazt53L"
+          material="color: red;"
+          box1-clickable
         >
           <a-text
-            value="Run the motor"
+            value="Run1"
             geometry="primitive: plane; height: auto; width: auto"
             material="opacity: 0;"
             color="#fff"
-            position="-0.6 0.5 0.2"
-            id="text1"
+            position="-0.25 0 0.2"
             height="3.5"
             width="3.5"
           ></a-text>
+        </a-box>
+
+        <a-box
+          position="-0.5 0 0"
+          height="0.5"
+          width="0.5"
+          depth="0.01"
+          rotation="-90 0 0"
+          material="color: red;"
+          box2-clickable
+        >
           <a-text
-            value="Click2"
+            value="Run2"
             geometry="primitive: plane; height: auto; width: auto"
             material="opacity: 0;"
             color="#fff"
-            position="-0.2 -0.2 0.2"
-            id="text2"
+            position="-0.25 0 0.3"
             height="3.5"
             width="3.5"
           ></a-text>
         </a-box>
       </a-marker>
 
-      <!--<a-marker preset="hiro">
-
-            <a-box id="sensor1" position='-0.7 0 0' depth="0.5" height="1.95" width="0.5" material='color:blue;'></a-box>
-            <a-box id="sensor2" position='0.7 0 0' depth="0.5" height="1.95" width="0.5" material='color:red;'></a-box>
-        </a-marker>-->
+      <a-marker
+        type="pattern"
+        preset="custom"
+        url="/assets/markers/pattern-charts.patt"
+      >
+        <a-box
+          id="sensor1"
+          position="-0.7 0 0"
+          depth="0.5"
+          height="1.95"
+          width="0.5"
+          material="color:blue;"
+        ></a-box>
+        <a-box
+          id="sensor2"
+          position="0.7 0 0"
+          depth="0.5"
+          height="1.95"
+          width="0.5"
+          material="color:red;"
+        ></a-box>
+      </a-marker>
       <a-entity camera></a-entity>
     </a-scene>
   </body>
 </html>
 
 <script>
-  //   let sensor1 = document.getElementById("sensor1");
-  //   let e = 1.95;
-  //   setInterval(() => {
-  //     e -= 0.01;
-  //     console.log(e);
-  //     sensor1.setAttribute("height", e);
-  //   }, 500);
+  // let sensor1 = document.getElementById("sensor1");
+  // let e = 1.95;
+  // setInterval(() => {
+  //   e -= 0.01;
+  //   console.log(e);
+  //   sensor1.setAttribute("height", e);
+  // }, 500);
 </script>
