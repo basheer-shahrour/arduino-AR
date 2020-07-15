@@ -1,4 +1,6 @@
 let lampSwitcher = "red";
+const mySocket = new SocketService();
+mySocket.connect();
 
 AFRAME.registerComponent("lamp-switcher", {
   init: function () {
@@ -6,7 +8,10 @@ AFRAME.registerComponent("lamp-switcher", {
     el.addEventListener("click", () => {
       lampSwitcher = lampSwitcher === "green" ? "red" : "green";
       el.setAttribute("material", `color: ${lampSwitcher};`);
-      socket.emit("message", lampSwitcher === "green" ? "lampOn" : "lampOff");
+      mySocket.socket.emit(
+        "message",
+        lampSwitcher === "green" ? "lampOn" : "lampOff"
+      );
       console.log("clicked");
     });
   },

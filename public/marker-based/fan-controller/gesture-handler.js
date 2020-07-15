@@ -51,9 +51,11 @@ AFRAME.registerComponent("gesture-handler", {
       if (oldDir != "left" && event.detail.positionChange.x < 0) {
         // TODO: send left command to the fan
         oldDir = "left";
+        console.log(oldDir);
       } else if (oldDir != "right" && event.detail.positionChange.x > 0) {
         // TODO: send right command to the fan
         oldDir = "right";
+        console.log(oldDir);
       }
     }
   },
@@ -65,6 +67,7 @@ AFRAME.registerComponent("gesture-handler", {
       if (speed != 1 && this.scaleFactor >= 0.5 && this.scaleFactor < 1) {
         // TODO: send 1 speed to the fan
         speed = 1;
+        console.log(speed);
       } else if (
         speed != 2 &&
         this.scaleFactor >= 1 &&
@@ -72,9 +75,11 @@ AFRAME.registerComponent("gesture-handler", {
       ) {
         // TODO: send 2 speed to the fan
         speed = 2;
+        console.log(speed);
       } else if (speed != 3 && this.scaleFactor >= 1.5) {
         // TODO: send 3 speed to the fan
         speed = 3;
+        console.log(speed);
       }
       this.scaleFactor = Math.min(
         Math.max(this.scaleFactor, this.data.minScale),

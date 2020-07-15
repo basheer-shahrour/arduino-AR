@@ -8,8 +8,8 @@
   <script src="/libs/socket/socket.io.js"></script>
   <script src="/webSocket.js"></script>
 
-  <script src="/marker-based/panel-charts/components.js"></script>
-  <script src="/marker-based/panel-charts/cursor.js"></script>
+  <script src="/marker-based/lamp-charts/components.js"></script>
+  <script src="/marker-based/lamp-charts/cursor.js"></script>
 
   <body style="margin: 0px; overflow: hidden;">
     <a-scene embedded arjs>
@@ -21,7 +21,7 @@
         url="/assets/markers/pattern-controlPanel.patt"
       >
         <a-box
-          position="0.5 0 0"
+          position="0 0 0"
           height="0.5"
           width="0.5"
           depth="0.01"
@@ -30,13 +30,13 @@
           lamp-switcher
         >
           <a-text
-            value="RunLamp"
+            value="Run"
             geometry="primitive: plane; height: auto; width: auto"
             material="opacity: 0;"
             color="#fff"
-            position="-0.25 0 0.2"
+            position="-0.1 0 0.2"
             height="3.5"
-            width="4.5"
+            width="3.5"
           ></a-text>
         </a-box>
       </a-marker>

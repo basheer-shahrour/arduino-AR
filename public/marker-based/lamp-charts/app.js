@@ -1,5 +1,3 @@
-const mySocket = new SocketService();
-
 const tempSensor = document.getElementById("tempSensor");
 let e = 1.225;
 tempSensor.setAttribute("height", e);

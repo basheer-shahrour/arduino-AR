@@ -4,7 +4,7 @@ class SocketService {
   }
 
   connect() {
-    this.socket = io.connect("http://localhost:3030");
+    this.socket = io.connect("https://969c5500f235.ngrok.io");
     this.socket.on("connect", () => console.log("connection sucssed ..."));
   }
 }
