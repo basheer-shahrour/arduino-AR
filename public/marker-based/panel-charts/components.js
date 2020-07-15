@@ -1,24 +1,12 @@
-let box1State = "red";
-let box2State = "red";
+let lampSwitcher = "red";
 
-AFRAME.registerComponent("box1-clickable", {
+AFRAME.registerComponent("lamp-switcher", {
   init: function () {
     const el = this.el;
-    el.addEventListener("click", (e) => {
-      box1State = box1State === "green" ? "red" : "green";
-      el.setAttribute("material", `color: ${box1State};`);
-      socket.emit("message", "btn1");
-      console.log("clicked");
-    });
-  },
-});
-
-AFRAME.registerComponent("box2-clickable", {
-  init: function () {
-    const el = this.el;
-    el.addEventListener("click", (e) => {
-      box2State = box2State === "green" ? "red" : "green";
-      el.setAttribute("material", `color: ${box2State};`);
+    el.addEventListener("click", () => {
+      lampSwitcher = lampSwitcher === "green" ? "red" : "green";
+      el.setAttribute("material", `color: ${lampSwitcher};`);
+      socket.emit("message", lampSwitcher === "green" ? "lampOn" : "lampOff");
       console.log("clicked");
     });
   },

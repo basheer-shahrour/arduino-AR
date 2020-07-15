@@ -1,8 +1,10 @@
-let socket = io.connect("http://localhost:3030");
-socket.on("connect", data => {
-  console.log("connection sucssed ...");
-});
+class SocketService {
+  constructor() {
+    this.socket = null;
+  }
 
-socket.on("message", data => {
-  console.log(data);
-});
+  connect() {
+    this.socket = io.connect("http://localhost:3030");
+    this.socket.on("connect", () => console.log("connection sucssed ..."));
+  }
+}

@@ -5,12 +5,11 @@
   </head>
   <script src="https://aframe.io/releases/1.0.0/aframe.min.js"></script>
   <script src="https://raw.githack.com/jeromeetienne/AR.js/2.2.2/aframe/build/aframe-ar.min.js"></script>
-  <!-- <script src="/libs/aframe-ar@2.2.2/aframe-ar.js"></script> -->
   <script src="/libs/socket/socket.io.js"></script>
   <script src="/webSocket.js"></script>
 
   <script src="/marker-based/panel-charts/components.js"></script>
-  <script src="/marker-based/panel-charts/cursor.js" defer></script>
+  <script src="/marker-based/panel-charts/cursor.js"></script>
 
   <body style="margin: 0px; overflow: hidden;">
     <a-scene embedded arjs>
@@ -28,36 +27,16 @@
           depth="0.01"
           rotation="-90 0 0"
           material="color: red;"
-          box1-clickable
+          lamp-switcher
         >
           <a-text
-            value="Run1"
+            value="RunLamp"
             geometry="primitive: plane; height: auto; width: auto"
             material="opacity: 0;"
             color="#fff"
             position="-0.25 0 0.2"
             height="3.5"
-            width="3.5"
-          ></a-text>
-        </a-box>
-
-        <a-box
-          position="-0.5 0 0"
-          height="0.5"
-          width="0.5"
-          depth="0.01"
-          rotation="-90 0 0"
-          material="color: red;"
-          box2-clickable
-        >
-          <a-text
-            value="Run2"
-            geometry="primitive: plane; height: auto; width: auto"
-            material="opacity: 0;"
-            color="#fff"
-            position="-0.25 0 0.3"
-            height="3.5"
-            width="3.5"
+            width="4.5"
           ></a-text>
         </a-box>
       </a-marker>
@@ -68,16 +47,8 @@
         url="/assets/markers/pattern-charts.patt"
       >
         <a-box
-          id="sensor1"
-          position="-0.7 0 0"
-          depth="0.5"
-          height="1.95"
-          width="0.5"
-          material="color:blue;"
-        ></a-box>
-        <a-box
-          id="sensor2"
-          position="0.7 0 0"
+          id="tempSensor"
+          position="0 0 0"
           depth="0.5"
           height="1.95"
           width="0.5"
@@ -86,15 +57,7 @@
       </a-marker>
       <a-entity camera></a-entity>
     </a-scene>
+
+    <script src="app.js"></script>
   </body>
 </html>
-
-<script>
-  // let sensor1 = document.getElementById("sensor1");
-  // let e = 1.95;
-  // setInterval(() => {
-  //   e -= 0.01;
-  //   console.log(e);
-  //   sensor1.setAttribute("height", e);
-  // }, 500);
-</script>
