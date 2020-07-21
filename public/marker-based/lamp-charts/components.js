@@ -1,6 +1,4 @@
 let lampSwitcher = "red";
-const mySocket = new SocketService();
-mySocket.connect();
 
 AFRAME.registerComponent("lamp-switcher", {
   init: function () {

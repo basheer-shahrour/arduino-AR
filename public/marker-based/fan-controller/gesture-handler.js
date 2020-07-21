@@ -1,5 +1,6 @@
 let oldDir = "";
 let speed = 1;
+let sendToServer = false;
 
 AFRAME.registerComponent("gesture-handler", {
   schema: {
@@ -49,13 +50,11 @@ AFRAME.registerComponent("gesture-handler", {
         event.detail.positionChange.y * this.data.rotationFactor;
 
       if (oldDir != "left" && event.detail.positionChange.x < 0) {
-        // TODO: send left command to the fan
+        if (sendToServer) mySocket.socket.emit("message", "fanLeft");
         oldDir = "left";
-        console.log(oldDir);
       } else if (oldDir != "right" && event.detail.positionChange.x > 0) {
-        // TODO: send right command to the fan
+        if (sendToServer) mySocket.socket.emit("message", "fanRight");
         oldDir = "right";
-        console.log(oldDir);
       }
     }
   },
@@ -65,21 +64,18 @@ AFRAME.registerComponent("gesture-handler", {
       this.scaleFactor *=
         1 + event.detail.spreadChange / event.detail.startSpread;
       if (speed != 1 && this.scaleFactor >= 0.5 && this.scaleFactor < 1) {
-        // TODO: send 1 speed to the fan
+        if (sendToServer) mySocket.socket.emit("message", "fanSpeed_1");
         speed = 1;
-        console.log(speed);
       } else if (
         speed != 2 &&
         this.scaleFactor >= 1 &&
         this.scaleFactor < 1.5
       ) {
-        // TODO: send 2 speed to the fan
+        if (sendToServer) mySocket.socket.emit("message", "fanSpeed_2");
         speed = 2;
-        console.log(speed);
       } else if (speed != 3 && this.scaleFactor >= 1.5) {
-        // TODO: send 3 speed to the fan
+        if (sendToServer) mySocket.socket.emit("message", "fanSpeed_3");
         speed = 3;
-        console.log(speed);
       }
       this.scaleFactor = Math.min(
         Math.max(this.scaleFactor, this.data.minScale),
