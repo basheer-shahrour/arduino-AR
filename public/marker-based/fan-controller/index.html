@@ -43,11 +43,13 @@
       </a-assets>
 
       <a-marker
-        preset="hiro"
         raycaster="objects: .clickable"
         emitevents="true"
         cursor="fuse: false; rayOrigin: mouse;"
         id="markerA"
+        type="pattern"
+        preset="custom"
+        url="/assets/markers/pattern-fanController.patt"
       >
         <a-entity
           id="bowser-model"
