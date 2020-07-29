@@ -8,22 +8,33 @@
   <script src="/libs/socket/socket.io.js"></script>
   <script src="/webSocket.js"></script>
 
-  <script src="/marker-based/lamp-charts/components.js"></script>
-  <script src="/marker-based/lamp-charts/cursor.js"></script>
+  <!-- <script src="/marker-based/lamp-charts/components.js"></script>
+  <script src="/marker-based/lamp-charts/cursor.js"></script> -->
+  <script src="/marker-based/lamp-charts/gesture-detector.js"></script>
+  <script src="/marker-based/lamp-charts/gesture-handler.js"></script>
 
   <body style="margin: 0px; overflow: hidden;">
-    <a-scene embedded arjs>
+    <a-scene
+      arjs
+      embedded
+      renderer="logarithmicDepthBuffer: true;"
+      vr-mode-ui="enabled: false"
+      gesture-detector
+      id="scene"
+    >
       <a-marker
-        cursor="rayOrigin: mouse"
-        raycaster="objects: a-box"
+        raycaster="objects: .clickable"
+        emitevents="true"
+        cursor="fuse: false; rayOrigin: mouse;"
         type="pattern"
         preset="custom"
         url="/assets/markers/pattern-lamp.patt"
       >
         <a-image
           rotation="-90 0 0"
-          src="https://cdn.glitch.com/a17e5232-ac73-44af-bd85-d94d4eb01043%2Ftemp-edit.png?v=1595929640939"
-          lamp-switcher
+          class="clickable"
+          src="https://cdn.glitch.com/a17e5232-ac73-44af-bd85-d94d4eb01043%2FlampOff.png?v=1595933974121"
+          gesture-handler
         ></a-image>
       </a-marker>
 
