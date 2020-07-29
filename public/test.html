@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0"
+    />
+    <title>Document</title>
+    <script src="https://aframe.io/releases/1.0.4/aframe.min.js"></script>
+    <script src="https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar.js"></script>
+  </head>
+  <body style="margin: 0px; overflow: hidden;">
+    <a-scene embedded arjs>
+      <a-marker preset="hiro">
+        <a-image
+          id="image"
+          rotation="90 0 0"
+          src="/assets/goldfish-tank-temperature.jpg"
+        ></a-image>
+      </a-marker>
+      <a-entity camera></a-entity>
+    </a-scene>
+    <script>
+      const image = document.getElementById("image");
+      image.removeAttribute("src");
+      image.setAttribute(
+        "src",
+        "https://cdn.glitch.com/a17e5232-ac73-44af-bd85-d94d4eb01043%2Ftemp-3.png?v=1595930509556"
+      );
+    </script>
+  </body>
+</html>

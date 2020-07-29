@@ -20,25 +20,11 @@
         preset="custom"
         url="/assets/markers/pattern-lamp.patt"
       >
-        <a-box
-          position="0 0 0"
-          height="0.5"
-          width="0.5"
-          depth="0.01"
+        <a-image
           rotation="-90 0 0"
-          material="color: red;"
+          src="https://cdn.glitch.com/a17e5232-ac73-44af-bd85-d94d4eb01043%2Ftemp-edit.png?v=1595929640939"
           lamp-switcher
-        >
-          <a-text
-            value="Run"
-            geometry="primitive: plane; height: auto; width: auto"
-            material="opacity: 0;"
-            color="#fff"
-            position="-0.1 0 0.2"
-            height="3.5"
-            width="3.5"
-          ></a-text>
-        </a-box>
+        ></a-image>
       </a-marker>
 
       <a-marker
@@ -46,18 +32,33 @@
         preset="custom"
         url="/assets/markers/pattern-charts.patt"
       >
-        <a-box
-          id="tempSensor"
-          position="0 0 0"
-          depth="0.5"
-          height="1.95"
-          width="0.5"
-          material="color:red;"
-        ></a-box>
+        <a-image
+          id="tempImage"
+          rotation="-90 0 0"
+          src="https://cdn.glitch.com/a17e5232-ac73-44af-bd85-d94d4eb01043%2Ftemp-edit.png?v=1595929640939"
+        ></a-image>
       </a-marker>
       <a-entity camera></a-entity>
     </a-scene>
 
-    <script src="app.js"></script>
+    <script>
+      const tempImage = document.getElementById("tempImage");
+      mySocket.socket.on("message", (data) => {
+        console.log(data);
+        if (data == "inc") {
+          tempImage.removeAttribute("src");
+          tempImage.setAttribute(
+            "src",
+            "https://cdn.glitch.com/a17e5232-ac73-44af-bd85-d94d4eb01043%2Ftemp-3.png?v=1595930509556"
+          );
+        } else if (data == "dec") {
+          tempImage.removeAttribute("src");
+          tempImage.setAttribute(
+            "src",
+            "https://cdn.glitch.com/a17e5232-ac73-44af-bd85-d94d4eb01043%2Ftemp-1.png?v=1595930507018"
+          );
+        }
+      });
+    </script>
   </body>
 </html>
